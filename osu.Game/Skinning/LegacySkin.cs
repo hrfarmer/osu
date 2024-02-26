@@ -21,6 +21,7 @@ using osu.Game.Extensions;
 using osu.Game.IO;
 using osu.Game.Rulesets.Objects.Types;
 using osu.Game.Rulesets.Scoring;
+using osu.Game.Screens.Play;
 using osu.Game.Screens.Play.HUD;
 using osu.Game.Screens.Play.HUD.HitErrorMeters;
 using osuTK;
@@ -381,7 +382,7 @@ namespace osu.Game.Skinning
                                 }
 
                                 var hitError = container.OfType<HitErrorMeter>().FirstOrDefault();
-                                var keyCounter = container.OfType<DefaultKeyCounterDisplay>().FirstOrDefault();
+                                var keyCounter = container.OfType<ArgonKeyCounterDisplay>().FirstOrDefault();
 
                                 if (hitError != null)
                                 {
@@ -391,11 +392,12 @@ namespace osu.Game.Skinning
 
                                     if (keyCounter != null)
                                     {
-                                        const float padding = 10;
+                                        const float padding = 30;
 
-                                        keyCounter.Anchor = Anchor.BottomRight;
-                                        keyCounter.Origin = Anchor.BottomRight;
-                                        keyCounter.Position = new Vector2(-padding, -(padding + hitError.Width));
+                                        keyCounter.Anchor = Anchor.CentreRight;
+                                        keyCounter.Origin = Anchor.Centre;
+                                        keyCounter.Position = new Vector2(-padding, 0);
+                                        keyCounter.Rotation = 90;
                                     }
                                 }
                             })
@@ -408,7 +410,7 @@ namespace osu.Game.Skinning
                                     new LegacySongProgress(),
                                     new LegacyHealthDisplay(),
                                     new BarHitErrorMeter(),
-                                    new DefaultKeyCounterDisplay()
+                                    new ArgonKeyCounterDisplay()
                                 }
                             };
                     }
